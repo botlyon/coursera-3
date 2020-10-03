@@ -1,1 +1,24 @@
 
+#1. I first download the data to "C:/temp", and load tidyverse packages.
+#2.Then assign each data to variables
+
+x1 <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
+y1 <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code")
+features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n","functions"))
+activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))
+subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+x2 <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$functions)
+y2 <- read.table("UCI HAR Dataset/test/y_test.txt", col.names = "code")
+subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+
+#3.combin the training set and the test set
+X <- rbind(x1, x2)
+Y <- rbind(y1, y2)
+Subject <- rbind(subject_train, subject_test)
+Merged_Data <- cbind(Subject, Y, X)
+#4. Only extract the average and standard deviation of each measurement.
+
+#5.name the activities in the data set.
+
+#6.labels the data set
+#7Create a second independent tidy data set containing the average of each variable for each activity and each topic.
